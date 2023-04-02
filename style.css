@@ -43,21 +43,9 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-	.nav {
-		padding-top: 10px;
-		padding-bottom: 10px;
-		border-radius: 10px;
-	}
-	.nav button {
-		padding-top: 10px;
-		padding-bottom: 10px;
-	}
-	.nav b {
-		display:block;
-	}
-	#main {
-		margin-left: 20px;
-	}
+
+
+
 }
 
 .nav button {
