@@ -1,64 +1,93 @@
-function openwin(url) {
-	PopupBlocked()
-	if(PopupBlocked()) {
-		document.getElementById("fpopuplink").href = url;
-		pfm();
-		document.getElementById("fpopuplink").focus();
-	}
-else {
-	window.open(url, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=150,left=150,width=1000,height=550");
-	}
-	
-}
-
-function PopupBlocked() {
-var PUtest = window.open(null,"","width=100,height=100");
-try { PUtest.close(); return false; }
-catch(e) { return true; }
-}
-
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-function pfm() {
-  document.getElementById("myModal").style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-function clsm() {
-  document.getElementById("myModal").style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+var lastitm, animations = true;
+function animateText(element, text) {
+  if (lastitm == text || !animations) {
+    return
   }
+  lastitm = text;
+  element.innerHTML = '';
+
+  const span = document.createElement('span');
+  span.textContent = text;
+  element.appendChild(span);
 }
 
-function includeHTML() {
-  var z, i, elmnt, file, xhttp;
-  z = document.getElementsByTagName("*");
-  for (i = 0; i < z.length; i++) {
-    elmnt = z[i];
-    file = elmnt.getAttribute("w3-include-html");
-    if (file) {
-      xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4) {
-          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-          if (this.status == 404) {elmnt.innerHTML = "part failed to load..";}
-          elmnt.removeAttribute("w3-include-html");
-          includeHTML();
-        }
-      }      
-      xhttp.open("GET", file, true);
-      xhttp.send();
-      return;
+var madefor = [
+  "Developers",
+  "Creators",
+  "Ease of use",
+  "Efficiency",
+  "the Web",
+  "You",
+  "Designers"
+];
+
+setInterval(function() {
+  animateText(document.getElementById("flashcards"), madefor[Math.floor(Math.random() * madefor.length)]);
+}, 1500);
+
+document.addEventListener('DOMContentLoaded', function() {
+  const hand = document.querySelector('#handsoftheguy');
+
+  document.querySelector('.flash svg').addEventListener('mouseenter', function() {
+    hand.setAttribute('d', 'M246.07758,147.84194c0,0 -4.11314,6.3764 -14.36498,6.668c-4.19501,0.11932 -8.87575,-2.69066 -11.83066,-2.51425c-5.42612,0.32395 -15.03978,0.8979 -15.03978,0.8979');
+  });
+
+  document.querySelector('.flash svg').addEventListener('mouseleave', function() {
+    hand.setAttribute('d', 'M241.41802,146.28875c0,0 0.54642,7.92959 -9.70542,8.22119c-4.19501,0.11932 -8.87575,-2.69066 -11.83066,-2.51425c-5.42612,0.32395 -15.03978,0.8979 -15.03978,0.8979');
+  });
+});
+
+let lastScrollTop = 0;
+const navbar = document.querySelector('.nav');
+navbar.style.background = 'transparent';
+navbar.style.color = 'black';
+
+window.addEventListener('scroll', () => {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (scrollTop === 0) {
+    navbar.style.background = 'transparent';
+    navbar.style.color = 'black';
+  } else {
+    navbar.style.background = '';
+    navbar.style.color = 'white';
+    if (scrollTop > lastScrollTop) {
+      navbar.style.top = '-60px'; // Adjust based on navbar height
+    } else {
+      navbar.style.top = '0';
     }
   }
-};
+
+  lastScrollTop = scrollTop;
+});
+
+function removeAnimations(rev) {
+  let element = document.getElementById('device')
+  if (rev) {
+    element.style.animation = '';
+    element.style.webkitAnimation = '';
+  } else {
+    element.style.animation = 'none';
+    element.style.webkitAnimation = 'none';
+  }
+
+}
+
+function pauseplayanims() {
+  let x = document.getElementById('dod');
+  if (x.getAttribute("name") == `play-outline`) {
+    x.setAttribute("name", "pause-outline");
+    animations = true;
+    removeAnimations(1)
+  } else {
+    x.setAttribute("name", "play-outline");
+    animations = false;
+    document.getElementById("flashcards").innerText = "Everything"
+    removeAnimations(0)
+  }
+}
+
+const motionMediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (motionMediaQuery.matches) {
+  pauseplayanims();
+}
