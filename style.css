@@ -72,6 +72,7 @@ html {
 	flex-direction: column;
 	padding-bottom: 0.5rem;
 	  max-width: 500px;
+	  margin: auto;
   }
   
   #flashcards {
