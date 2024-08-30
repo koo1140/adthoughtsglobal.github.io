@@ -175,11 +175,13 @@ nav a:hover {
 	opacity: 0;
 	transition: 1s ease;
 	transform: translateY(1rem);
+	filter:blur(5px);
 }
 
 .triggered {
 	opacity: 1;
 	transform: translateY(0vw);
+	filter:blur(0px);
 }
 
 @keyframes boom {
@@ -240,6 +242,7 @@ nav a:hover {
 
 .whyres:hover {
 	box-shadow: 0 3px 1rem #101010;
+	transform: translateY(-0.5rem);
 }
 
 .whyres p {
