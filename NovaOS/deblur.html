@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Deblur Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Deblur Test</h1>
+    <input type="file" id="imageUpload" accept="image/*">
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        imageUpload.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
+                img.onload = function() {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+
+                    // Apply sharpening filter
+                    applyUnsharpMask(ctx, img.width, img.height);
+                    
+                    URL.revokeObjectURL(img.src);
+                };
+            }
+        });
+
+        function applyUnsharpMask(ctx, width, height) {
+            // Get the image data
+            const imageData = ctx.getImageData(0, 0, width, height);
+            const data = imageData.data;
+
+            // Kernel for unsharp mask
+            const kernel = [
+                -1, -1, -1,
+                -1,  9, -1,
+                -1, -1, -1
+            ];
+
+            const side = Math.round(Math.sqrt(kernel.length));
+            const halfSide = Math.floor(side / 2);
+
+            const output = ctx.createImageData(width, height);
+            const outputData = output.data;
+
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    let r = 0, g = 0, b = 0, a = 0;
+                    for (let ky = 0; ky < side; ky++) {
+                        for (let kx = 0; kx < side; kx++) {
+                            const posX = x + kx - halfSide;
+                            const posY = y + ky - halfSide;
+                            if (posX >= 0 && posX < width && posY >= 0 && posY < height) {
+                                const offset = (posY * width + posX) * 4;
+                                const weight = kernel[ky * side + kx];
+                                r += data[offset] * weight;
+                                g += data[offset + 1] * weight;
+                                b += data[offset + 2] * weight;
+                                a += data[offset + 3];
+                            }
+                        }
+                    }
+                    const destOffset = (y * width + x) * 4;
+                    outputData[destOffset] = r;
+                    outputData[destOffset + 1] = g;
+                    outputData[destOffset + 2] = b;
+                    outputData[destOffset + 3] = data[destOffset + 3];
+                }
+            }
+
+            ctx.putImageData(output, 0, 0);
+        }
+    </script>
+</body>
+</html>
