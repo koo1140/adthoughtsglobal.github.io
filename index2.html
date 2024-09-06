@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Web OS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font: 'Noto Sans', sans-serif;
+            --color1: #B071FF;
+            --color2: #FF9C71;
+            --white: #fff;
+            --black: #000;
+            --background-color: rgba(0, 0, 0, 0.8);
+            --input-bg: #1a1c1e;
+            --input-border: #7289da;
+            --button-bg: rgba(255, 255, 255, 0.1);
+            --button-hover-bg: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font);
+            color: var(--white);
+            background: url('https://superdevresources.com/wp-content/uploads/2015/12/new-york-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav img {
+            height: 2.5rem;
+        }
+
+        nav b {
+            font-size: 1.2rem;
+            color: var(--white);
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color1);
+        }
+
+        .background {
+            display: flex;
+            min-height: 100vh;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .background .shape {
+            filter: blur(465px);
+            position: absolute;
+        }
+
+        .background .shape:nth-child(1) {
+            background-color: #ffb0d8;
+            top: -340px;
+            width: 300px;
+            height: 300px;
+        }
+
+        .background .shape:nth-child(2) {
+            left: 100px;
+            bottom: -150px;
+            background-color: #c26cf3;
+            width: 200px;
+            height: 210px;
+        }
+
+        .background .shape:nth-child(3) {
+            background-color: #87cfdf;
+            bottom: -150px;
+            right: 100px;
+            width: 300px;
+            height: 300px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 2rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .feature {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--white);
+        }
+
+        .feature img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .runbtn {
+            background-color: var(--button-bg);
+            border: none;
+            border-radius: 15px;
+            padding: 1rem 2rem;
+            color: var(--white);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .runbtn:hover {
+            background-color: var(--button-hover-bg);
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: none;
+            border-radius: 10px;
+            background-color: var(--input-bg);
+            color: var(--white);
+            transition: border-color 0.3s ease;
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2), -8px -8px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: var(--input-border);
+        }
+
+        label {
+            opacity: 0.8;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <nav>
+        <img src="nova.webp" alt="Nova OS Logo">
+        <b>Nova OS</b>
+        <a href="https://github.com/adthoughtsglobal/">Github</a>
+        <a href="https://discord.gg/atkqbwEQU8">Discord</a>
+        <a href="https://adthoughtsglobal.github.io/Nova-OS/">Launch</a>
+    </nav>
+
+    <main>
+        <div class="feature">
+            <span id="ver">Nova OS 2</span>
+            <h1><span>An OS</span> That's <br><a href="#" style="color: #4e8bff;">Made For You.</a></h1>
+            <img src="screenshot.png" alt="Nova OS Screenshot">
+        </div>
+
+        <div class="dark">
+            <button class="runbtn" onclick="window.open('https://adthoughtsglobal.github.io/Nova-OS/')">Launch Nova OS</button>
+        </div>
+    </main>
+</body>
+
+</html>
