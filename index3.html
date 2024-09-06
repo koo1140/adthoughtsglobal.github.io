@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Web OS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: url('https://superdevresources.com/wp-content/uploads/2015/12/new-york-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      color: #fff;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: #7289da;
+    }
+
+    .flash {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      text-align: center;
+    }
+
+    .flashdesc {
+      margin-bottom: 2rem;
+    }
+
+    .flashdesc h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .flashdesc p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 1.2rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .thecoolbtn {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 15px;
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin: 0.5rem;
+      backdrop-filter: blur(10px);
+      transition: background 0.3s;
+    }
+
+    .thecoolbtn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .interactivepreview {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .desktop {
+      width: 300px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 1rem;
+      backdrop-filter: blur(15px);
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2), -10px -10px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+    }
+
+    .footer .centeredlogo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer .socials i {
+      font-size: 2rem;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .footer .socials i:hover {
+      color: #7289da;
+    }
+
+    @media (max-width: 768px) {
+      .buttons {
+        flex-direction: column;
+      }
+
+      .flashdesc h1 {
+        font-size: 2rem;
+      }
+
+      .flashdesc p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="uspart poppins">
+      <a href="#">adthoughtsglobal</a>
+    </div>
+    <div class="navpart">
+      <a href="https://adthoughtsglobal.github.io/NovaOS/index.html">NovaOS</a>
+      <a href="#contact">Connect</a>
+      <a id="playbtn" onclick="pauseplayanims()">
+        <ion-icon name="pause-outline" id="dod"></ion-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="flash" id="novaos">
+    <div class="flashdesc">
+      <small style="opacity: 0.5;">Introducing</small>
+      <h1 class="poppins">The WebOS made <br class="flashbr">for <span id="flashcards">Everything</span></h1>
+      <p>NovaOS is a powerful web operating system built for everything. From daily tasks to endless fun, it has you covered.</p>
+    </div>
+    <div class="buttons">
+      <a class="thecoolbtn" href="https://adthoughtsglobal.github.io/Nova-OS">Try it <ion-icon name="chevron-forward-outline"></ion-icon></a>
+      <a class="thecoolbtn" href="https://adthoughtsglobal.github.io/NovaOS/index.html">Learn More <ion-icon name="chevron-forward-outline"></ion-icon></a>
+    </div>
+    <div class="interactivepreview">
+      <div id="device">
+        <div class="desktop">
+          <!-- Device Preview Content Here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer" id="contact">
+    <b class="poppins centeredlogo">adthoughtsglobal</b>
+    <div class="socials">
+      <i class="fa-brands fa-youtube" onclick="window.open('https://www.youtube.com/@adthoughtsglobal')"></i>
+      <i class="fa-brands fa-discord" onclick="window.open('https://discord.com/invite/atkqbwEQU8')"></i>
+      <i class="fa-brands fa-x-twitter" onclick="window.open('https://x.com/adthattweets')"></i>
+      <i class="fa-brands fa-github" onclick="window.open('https://github.com/adthoughtsglobal/')"></i>
+      <i class="fa-brands fa-patreon" onclick="window.open('https://patreon.com/adthoughtsglobal/')"></i>
+      <i class="fa-brands fa-blogger" onclick="window.open('https://adthoughtsglobal.blogspot.com/')"></i>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
