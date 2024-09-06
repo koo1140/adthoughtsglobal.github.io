@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Web OS</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font: 'Noto Sans', ui-sans-serif;
+            --p: 1rem;
+            --h: 1.2rem;
+            --white: #fff;
+            --black: #000;
+            --color1: #B071FF;
+            --color2: #FF9C71;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font);
+            background: url('https://superdevresources.com/wp-content/uploads/2015/12/new-york-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--white);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 6rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+        }
+
+        nav img {
+            height: 3rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color1);
+        }
+
+        .feature {
+            margin-top: 6rem;
+        }
+
+        .feature h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .feature img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .dark {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 1200px;
+            width: 100%;
+            margin: 2rem auto;
+        }
+
+        .runbtn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1rem 2rem;
+            color: var(--white);
+            font-size: var(--p);
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s, border-color 0.3s;
+            margin: 1rem 0;
+            display: inline-block;
+        }
+
+        .runbtn:hover {
+            background: var(--glass-border);
+            border-color: var(--color1);
+        }
+
+        .ban {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ban h1 {
+            margin: 0;
+        }
+
+        .ban .devices {
+            max-width: 500px;
+        }
+
+        .reliable {
+            margin: 2rem 0;
+        }
+
+        .whyboxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .whyres {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1rem;
+            margin: 1rem;
+            flex: 1 1 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .whyres:hover {
+            transform: scale(1.05);
+        }
+
+        .whyres span {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .footer a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--color1);
+        }
+
+        @media (max-width: 768px) {
+            .feature h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src="nova.webp" alt="Nova OS Logo">
+        <b>Nova OS</b>
+        <a href="https://github.com/adthoughtsglobal/">Github</a>
+        <a href="https://discord.gg/atkqbwEQU8">Discord</a>
+        <a href="https://adthoughtsglobal.github.io/Nova-OS/">Launch</a>
+    </nav>
+    <main>
+        <div class="feature">
+            <span id="ver">Nova OS 2</span>
+            <h1><span>An OS</span> That's <br><a style="color: #4e8bff;">Made For You.</a></h1>
+            <img src="screenshot.png" alt="Nova OS Screenshot">
+        </div>
+        <div class="dark">
+            <button class="runbtn" onclick="window.open('https://adthoughtsglobal.github.io/Nova-OS/')">Launch Nova OS</button>
+            <div class="ban">
+                <div class="darkflex1">
+                    <div>
+                        <h1>An OS That empowers any device.</h1>
+                        <p>Nova OS is a highly customizable, web-based operating system designed to fit seamlessly on any device with a browser. It offers a robust and feature-rich experience, from gaming to daily tasks, combining speed, security, and a stunning user interface. With the ability to personalize elements like wallpapers from your own photos and frequent, non-intrusive updates, Nova OS ensures that your digital environment is as dynamic and unique as you are.</p>
+                    </div>
+                    <img src="devices.png" class="devices" alt="Devices">
+                </div>
+            </div>
+            <div class="reliable">
+                <h1>Why Nova OS?</h1>
+                <div class="scrollerbox">
+                    <div class="whyboxes">
+                        <div class="whyres">
+                            <span class="material-icons">auto_awesome</span>
+                            <b>Customizable</b>
+                            <p>With its powerful features like setting a wallpaper from an image that you took with it - Nova makes sure your OS feel like you, just as beautiful.</p>
+                        </div>
+                        <div class="whyres">
+                            <span class="material-icons" style="background: -webkit-linear-gradient(#fdff59, #ff9100); -webkit-background-clip: text;">bolt</span>
+                            <b>Powerful</b>
+                            <p>From gaming to regular work, Nova has features to cover all your needs, Fast, secure and easy with its stunning UI.</p>
+                        </div>
+                        <div class="whyres">
+                            <span class="material-icons" style="background: -webkit-linear-gradient(#ff2157, #ff1ec4); -webkit-background-clip: text;">favorite</span>
+                            <b>Feature-rich</b>
+                            <p>With every NovaOS update, we tend to announce more features that the user seems to struggle without. You can do anything in Nova one way or the other, but we make it easier and better every update!</p>
+                        </div>
+                        <div class="whyres">
+                            <span class="material-icons" style="background: -webkit-linear-gradient(#00adff, #aad4ff); -webkit-background-clip: text;">update</span>
+                            <b>Regular updates</b>
+                            <p>NovaOS changes with the latest updates and features the web has to offer. We make the changes non-intrusive and powerful at the same time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="footer">
+        <b>Nova OS</b>
+        <a href="https://github.com/adthoughtsglobal/Nova-OS/blob/main/Adthoughtsglobal%20Nova%20Terms%20of%20use">Terms</a>
+        <a href="https://discord.gg/atkqbwEQU8">Support</a>
+        <a>(c) 2024</a>
+    </div>
+</body>
+
+</html>
